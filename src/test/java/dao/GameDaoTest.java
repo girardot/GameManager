@@ -1,5 +1,6 @@
 package dao;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class GameDaoTest {
@@ -10,9 +11,10 @@ public class GameDaoTest {
         this.gameDao = gameDao;
     }
 
-    @Test
-    public void should_() {
-
-    }
+//    @Ignore
+//    @Test
+//    public void should_() {
+//
+//    }
 
 }
