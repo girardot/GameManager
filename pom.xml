@@ -14,6 +14,7 @@
         <opencsv.version>2.3</opencsv.version>
         <junit.version>4.10</junit.version>
         <spring-context.version>3.2.3.RELEASE</spring-context.version>
+        <spring-core.version>3.2.3.RELEASE</spring-core.version>
         <natives.version>0.0.6</natives.version>
     </properties>
 
@@ -45,6 +46,12 @@
 
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring-core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring-context.version}</version>
         </dependency>
@@ -53,6 +60,12 @@
             <groupId>org.easytesting</groupId>
             <artifactId>fest-assert</artifactId>
             <version>1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
         </dependency>
 
     </dependencies>

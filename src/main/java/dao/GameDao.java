@@ -1,16 +1,15 @@
 package dao;
 
-import au.com.bytecode.opencsv.CSVReader;
-import helper.CsvFileHelper;
 import model.Game;
+import org.springframework.stereotype.Repository;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static helper.CsvFileHelper.readCsvFile;
 
+@Repository
 public class GameDao {
 
     private final static String RESOURCES_PATH = "src/main/resources/";
@@ -21,7 +20,7 @@ public class GameDao {
 
     public List<Game> findGames() throws FileNotFoundException {
 
-        final List<String[] > data = readCsvFile(RESOURCES_PATH + ELEVES_FILE_NAME, SEPARATOR);
+        final List<String[]> data = readCsvFile(RESOURCES_PATH + ELEVES_FILE_NAME, SEPARATOR);
 
         List<Game> games = dataToGames(data);
 

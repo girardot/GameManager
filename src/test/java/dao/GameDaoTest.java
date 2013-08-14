@@ -1,20 +1,23 @@
 package dao;
 
-import com.sun.xml.internal.ws.policy.AssertionSet;
 import model.Game;
 import org.fest.assertions.Assertions;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-
+import javax.inject.Inject;
 import java.io.FileNotFoundException;
 import java.util.List;
 
+//@ContextConfig
 public class GameDaoTest {
 
+    @Inject
     public GameDao gameDao;
 
     public GameDaoTest() {
+//        new ClassPathXmlApplicationContext("context.xml", GameDaoTest.class);
     }
 
     @Before
