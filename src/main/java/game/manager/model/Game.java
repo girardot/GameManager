@@ -17,6 +17,13 @@ public class Game implements Serializable {
     @Column(name = "TITLE")
     private String title;
 
+    @ManyToOne
+    @JoinColumn(name="console_id")
+    private Console console;
+
+    public Game() {
+    }
+
     public Game(String title) {
         this.title = title;
     }
@@ -36,4 +43,13 @@ public class Game implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public Console getConsole() {
+        return console;
+    }
+
+    public void setConsole(Console console) {
+        this.console = console;
+    }
+
 }

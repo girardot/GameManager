@@ -27,21 +27,21 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public void save( Game customer )
+    public void save( Game game )
     {
-        gameDao.save(customer);
+        gameDao.save(game);
     }
 
     @Override
-    public void update( Game customer )
+    public void update( Game game )
     {
-        gameDao.update(customer);
+        gameDao.update(game);
     }
 
     @Override
-    public void delete( Game customer )
+    public void delete( Game game )
     {
-        gameDao.delete(customer);
+        gameDao.delete(game);
     }
 
     @Override

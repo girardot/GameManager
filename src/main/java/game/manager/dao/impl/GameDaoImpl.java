@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 @Repository("gameDao")
-public class GameDaoHibernateImpl extends HibernateDaoSupport implements GameDao {
+public class GameDaoImpl extends HibernateDaoSupport implements GameDao {
 
     @Override
     public Game findById(long id) {

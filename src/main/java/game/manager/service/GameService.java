@@ -10,11 +10,11 @@ public interface GameService {
 
     public List<Game> findAll();
 
-    public void save(Game customer);
+    public void save(Game game);
 
-    public void update(Game customer);
+    public void update(Game game);
 
-    public void delete(Game customer);
+    public void delete(Game game);
 
     public void shutdown();
 
