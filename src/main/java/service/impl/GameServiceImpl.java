@@ -1,6 +1,6 @@
 package service.impl;
 
-import dao.GameDao;
+import dao.impl.GameDaoCsvImpl;
 import model.Game;
 import org.springframework.stereotype.Service;
 import service.GameService;
@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class GameServiceImpl implements GameService {
 
-    private GameDao gameDao;
+    private GameDaoCsvImpl gameDao;
 
     private List<Game> games;
 
@@ -21,7 +21,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Inject
-    public GameServiceImpl(GameDao gameDao) {
+    public GameServiceImpl(GameDaoCsvImpl gameDao) {
         this.gameDao = gameDao;
         this.games = new ArrayList<Game>();
     }

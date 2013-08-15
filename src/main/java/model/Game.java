@@ -1,5 +1,8 @@
 package model;
 
+import org.hibernate.annotations.Entity;
+
+@Entity
 public class Game {
 
     private String title;
