@@ -1,4 +1,4 @@
-package helper;
+package game.manager.helper;
 
 import au.com.bytecode.opencsv.CSVReader;
 

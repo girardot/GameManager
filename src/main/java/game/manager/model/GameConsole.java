@@ -1,4 +1,4 @@
-package model;
+package game.manager.model;
 
 import java.util.List;
 

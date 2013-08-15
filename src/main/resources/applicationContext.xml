@@ -11,7 +11,7 @@
     <context:annotation-config />
 
     <!-- ANNOTATIONS POUR LA CREATION DE BEANS -->
-    <context:component-scan base-package="*"/>
+    <context:component-scan base-package="game.manager"/>
 
     <bean id="applicationProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:csv-location.properties"/>
@@ -41,10 +41,10 @@
             </props>
         </property>
 
-        <!-- The packages that contain our Hibernate model classes -->
+        <!-- The packages that contain our Hibernate game.manager.model classes -->
         <property name="packagesToScan">
             <list>
-                <value>model.*</value>
+                <value>game.manager.model</value>
             </list>
         </property>
     </bean>

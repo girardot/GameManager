@@ -1,7 +1,6 @@
-package dao;
+package game.manager.dao;
 
-import model.Game;
-import model.GameConsole;
+import game.manager.model.GameConsole;
 import org.fest.util.VisibleForTesting;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -10,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static helper.CsvFileHelper.readCsvFile;
+import static game.manager.helper.CsvFileHelper.readCsvFile;
 
 @Repository
 public class GameConsoleDao {

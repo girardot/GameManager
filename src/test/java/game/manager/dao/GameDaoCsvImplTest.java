@@ -1,7 +1,7 @@
-package dao;
+package game.manager.dao;
 
-import dao.impl.GameDaoCsvImpl;
-import model.Game;
+import game.manager.dao.impl.GameDaoCsvImpl;
+import game.manager.model.Game;
 import org.fest.assertions.Assertions;
 import org.junit.Before;
 import org.junit.Test;

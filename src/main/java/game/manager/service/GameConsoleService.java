@@ -1,6 +1,6 @@
-package service;
+package game.manager.service;
 
-import model.Game;
+import game.manager.model.Game;
 
 import java.util.List;
 
