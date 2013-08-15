@@ -13,14 +13,16 @@ public class GameManager {
 
     private String GAME_CONSOLE_FILE_NAME = "games-console.csv";
 
+
     public static void main(String[] args) {
 
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("context.xml", GameManager.class);
 
-        GameService gameService = (GameService)context.getBean("gameServiceImpl");
+        GameService gameService = (GameService)context.getBean("gameServiceHibernateImpl");
 
-        gameService.loadGamesInMermory();
+        //gameService.loadGamesInMermory();
 
+        //gameService.addNewGame(new Game("Call of duty"));
         gameService.addNewGame(new Game("Call of duty"));
 
         List<Game> allGames = gameService.getAllGames();
