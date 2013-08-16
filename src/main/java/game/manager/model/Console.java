@@ -1,6 +1,7 @@
 package game.manager.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,13 +16,15 @@ public class Console {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "console", cascade={CascadeType.ALL})
+    @OneToMany(mappedBy = "console", cascade={CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<Game> games;
 
     public Console() {
+        games = new ArrayList<Game>();
     }
 
     public Console(String name) {
+        games = new ArrayList<Game>();
         this.name = name;
     }
 
@@ -47,5 +50,10 @@ public class Console {
 
     public void setGames(List<Game> games) {
         this.games = games;
+    }
+
+    public void addGame(Game game) {
+        games.add(game);
+        game.setConsole(this);
     }
 }
