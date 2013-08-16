@@ -1,5 +1,6 @@
 package game.manager;
 
+import com.google.common.collect.Lists;
 import game.manager.model.Console;
 import game.manager.model.Game;
 import game.manager.service.ConsoleService;
@@ -27,27 +28,16 @@ public class GameManager {
         applicationContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
         initServices();
 
-        showGames(gameService.findAll());
-        addGame("Call of duty");
-        showGames(gameService.findAll());
+        Console console = new Console("ps3");
+        console.addGame(new Game("Call of duty"));
 
-        addConsole("ps3");
+        consoleService.save(console);
 
         gameService.shutdown();
         consoleService.shutdown();
 
         showConsolesAndGames();
 
-    }
-
-    public static void addGame(String title) {
-        gameService.save(new Game("Call of duty"));
-    }
-
-    public static void addConsole(String name) {
-        Console console = new Console(name);
-
-        consoleService.save(console);
     }
 
     public static void showGames(List<Game> games) {
@@ -63,7 +53,7 @@ public class GameManager {
 
     public static void showConsolesAndGames() {
         List<Console> consoles = consoleService.findAll();
-        System.out.println("Games:");
+        System.out.println("Consoles:");
         for (Console console : consoles) {
             System.out.println("\t" + console.getName());
             showGames(console.getGames()) ;
