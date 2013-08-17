@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "GAME_CONSOLE")
+@Table(name = "CONSOLE")
 public class Console {
 
     @Id
@@ -13,7 +13,7 @@ public class Console {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name")
+    @Column(name = "console_name")
     private String name;
 
     @OneToMany(mappedBy = "console", cascade={CascadeType.ALL}, fetch = FetchType.EAGER)

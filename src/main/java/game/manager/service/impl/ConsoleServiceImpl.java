@@ -2,6 +2,7 @@ package game.manager.service.impl;
 
 import game.manager.dao.ConsoleDao;
 import game.manager.model.Console;
+import game.manager.model.Game;
 import game.manager.service.ConsoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,19 @@ public class ConsoleServiceImpl implements ConsoleService {
     public List<Console> findAll() {
         return consoleDao.findAll();
     }
+
+    @Override
+    public Console findByName(String name) {
+        Console result = null;
+        List consolesByName = consoleDao.findByName(name.toLowerCase());
+
+        if (consolesByName.size() > 0) {
+            result = (Console) consolesByName.get(0);
+        }
+
+        return result;
+    }
+
 
     @Override
     public void save(Console console) {

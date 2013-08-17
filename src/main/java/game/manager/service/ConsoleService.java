@@ -11,6 +11,8 @@ public interface ConsoleService {
 
     public List<Console> findAll();
 
+    public Console findByName(String name);
+
     public void save(Console console);
 
     public void update(Console console);

@@ -25,6 +25,11 @@ public class ConsoleDaoImpl extends HibernateDaoSupport implements ConsoleDao {
     }
 
     @Override
+    public List<Console> findByName(String name) {
+        return getHibernateTemplate().find("from game.manager.model.Console c where c.name=?", name);
+    }
+
+    @Override
     public void save(Console console) {
         getHibernateTemplate().save(console);
     }

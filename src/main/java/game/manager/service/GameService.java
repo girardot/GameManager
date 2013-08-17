@@ -10,6 +10,8 @@ public interface GameService {
 
     public List<Game> findAll();
 
+    public Game findByTitle(String title);
+
     public void save(Game game);
 
     public void update(Game game);

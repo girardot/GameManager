@@ -23,6 +23,11 @@ public class GameDaoImpl extends HibernateDaoSupport implements GameDao {
     }
 
     @Override
+    public List<Game> findByTitle(String title) {
+        return getHibernateTemplate().find("from game.manager.model.Game g where g.title=?", title);
+    }
+
+    @Override
     public void save(Game game) {
         getHibernateTemplate().save(game);
     }

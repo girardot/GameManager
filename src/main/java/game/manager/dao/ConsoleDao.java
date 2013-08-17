@@ -9,16 +9,17 @@ import java.util.List;
 @Repository
 public interface ConsoleDao {
 
-    public Console findById(long id);
+    Console findById(long id);
 
-    public List<Console> findAll();
+    List<Console> findAll();
 
-    public void save(Console customer);
+    List findByName(String s);
 
-    public void update(Console customer);
+    void save(Console customer);
 
-    public void delete(Console customer);
+    void update(Console customer);
 
-    public void shutdown();
+    void delete(Console customer);
 
+    void shutdown();
 }

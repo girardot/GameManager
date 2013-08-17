@@ -10,6 +10,8 @@ public interface GameDao {
 
     public List<Game> findAll();
 
+    public List findByTitle(String title);
+
     public void save(Game customer);
 
     public void update(Game customer);

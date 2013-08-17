@@ -25,7 +25,19 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
+    public Game findByTitle(String title) {
+        Game result = null;
+        List gamesByTitle = gameDao.findByTitle(title.toLowerCase());
+
+        if (gamesByTitle.size() > 0) {
+            result = (Game) gamesByTitle.get(0);
+        }
+        return result;
+    }
+
+    @Override
     public void save(Game game) {
+        game.setTitle(game.getTitle().toLowerCase());
         gameDao.save(game);
     }
 

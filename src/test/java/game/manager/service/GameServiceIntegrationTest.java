@@ -1,14 +1,10 @@
 package game.manager.service;
 
-import game.manager.model.Console;
 import game.manager.model.Game;
 import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 
 import javax.inject.Inject;
-import java.util.List;
-
-import static org.fest.assertions.api.Assertions.extractProperty;
 
 public class GameServiceIntegrationTest extends AbstractIntegrationTest {
 
@@ -24,10 +20,17 @@ public class GameServiceIntegrationTest extends AbstractIntegrationTest {
         gameService.save(game);
 
         //Then
-        List<Game> games = gameService.findAll();
-        Game gameResult = games.get(0);
-        Assertions.assertThat(gameResult.getTitle()).isEqualTo("Call of duty");
+        Game gameResult = gameService.findByTitle("Call of duty");
+        Assertions.assertThat(gameResult.getTitle()).isEqualTo("call of duty");
     }
 
+    @Test
+    public void should_find_game_by_title() {
+        // When
+        Game gameResult = gameService.findByTitle("Call of duty");
+
+        //Then
+        Assertions.assertThat(gameResult.getTitle()).isEqualTo("call of duty");
+    }
 
 }

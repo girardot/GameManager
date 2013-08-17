@@ -24,8 +24,7 @@ public class ConsoleServiceIntegrationTest extends AbstractIntegrationTest {
         consoleService.save(console);
 
         //Then
-        List<Console> consoles = consoleService.findAll();
-        Console consoleResult = consoles.get(0);
+        Console consoleResult = consoleService.findByName("ps3");
         Assertions.assertThat(consoleResult.getName()).isEqualTo("ps3");
     }
 
@@ -41,11 +40,19 @@ public class ConsoleServiceIntegrationTest extends AbstractIntegrationTest {
         consoleService.save(console);
 
         // Then
-        List<Console> consoles = consoleService.findAll();
-        Console console1 = consoles.get(0);
+        Console consoleResult = consoleService.findByName("ps3");
 
-        Assertions.assertThat(extractProperty("name").from(consoles)).contains("ps3");
-        Assertions.assertThat(extractProperty("title").from(console1.getGames())).contains("Call of duty", "Call of duty 2", "Call of duty 3");
+        Assertions.assertThat(consoleResult.getName()).isEqualTo("ps3");
+        Assertions.assertThat(extractProperty("title").from(consoleResult.getGames())).contains("Call of duty", "Call of duty 2", "Call of duty 3");
+    }
+
+    @Test
+    public void should_find_console_by_name() {
+        // When
+        Console console = consoleService.findByName("PS2");
+
+        //Then
+        Assertions.assertThat(console.getName()).isEqualTo("ps2");
     }
 
 }
