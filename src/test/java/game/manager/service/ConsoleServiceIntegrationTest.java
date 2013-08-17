@@ -24,7 +24,9 @@ public class ConsoleServiceIntegrationTest extends AbstractIntegrationTest {
         consoleService.save(console);
 
         //Then
-        Assertions.assertThat(console.getName()).isEqualTo("ps3");
+        List<Console> consoles = consoleService.findAll();
+        Console consoleResult = consoles.get(0);
+        Assertions.assertThat(consoleResult.getName()).isEqualTo("ps3");
     }
 
     @Test
