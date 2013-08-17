@@ -6,7 +6,6 @@ import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 
 import javax.inject.Inject;
-import java.util.List;
 
 import static org.fest.assertions.api.Assertions.extractProperty;
 
@@ -47,12 +46,13 @@ public class ConsoleServiceIntegrationTest extends AbstractIntegrationTest {
     }
 
     @Test
-    public void should_find_console_by_name() {
+    public void should_find_console_by_name_and_games() {
         // When
         Console console = consoleService.findByName("PS2");
 
         //Then
         Assertions.assertThat(console.getName()).isEqualTo("ps2");
+        Assertions.assertThat(extractProperty("title").from(console.getGames())).contains("gta3", "nhl 2004");
     }
 
 }
