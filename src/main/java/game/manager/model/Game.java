@@ -11,10 +11,10 @@ public class Game implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
+    @Column(name = "id")
     private long id;
 
-    @Column(name = "TITLE")
+    @Column(name = "title")
     private String title;
 
     @ManyToOne

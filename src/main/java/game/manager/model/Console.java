@@ -10,7 +10,7 @@ public class Console {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
+    @Column(name = "id")
     private long id;
 
     @Column(name = "name")
