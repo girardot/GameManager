@@ -4,22 +4,28 @@ import game.manager.model.Console;
 import game.manager.model.Game;
 import org.fest.assertions.api.Assertions;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.inject.Inject;
 import java.util.List;
 
 import static org.fest.assertions.api.Assertions.extractProperty;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/applicationContext.xml")
-public class ConsoleServiceIntegrationTest extends AbstractTransactionalJUnit4SpringContextTests{
+public class ConsoleServiceIntegrationTest extends AbstractIntegrationTest {
 
     @Inject
     private ConsoleService consoleService;
+
+    @Test
+    public void should_add_new_console() {
+        // Given
+        Console console = new Console("ps3");
+
+        // When
+        consoleService.save(console);
+
+        //Then
+        Assertions.assertThat(console.getName()).isEqualTo("ps3");
+    }
 
     @Test
     public void should_add_console_and_games() {
