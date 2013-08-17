@@ -30,7 +30,7 @@ public class ConsoleServiceIntegrationTest extends AbstractIntegrationTest {
     @Test
     public void should_add_console_and_games() {
         // Given
-        Console console = new Console("ps3");
+        Console console = new Console("ps3-test");
         console.addGame(new Game("Call of duty"));
         console.addGame(new Game("Call of duty 2"));
         console.addGame(new Game("Call of duty 3"));
@@ -39,9 +39,9 @@ public class ConsoleServiceIntegrationTest extends AbstractIntegrationTest {
         consoleService.save(console);
 
         // Then
-        Console consoleResult = consoleService.findByName("ps3");
+        Console consoleResult = consoleService.findByName("ps3-test");
 
-        Assertions.assertThat(consoleResult.getName()).isEqualTo("ps3");
+        Assertions.assertThat(consoleResult.getName()).isEqualTo("ps3-test");
         Assertions.assertThat(extractProperty("title").from(consoleResult.getGames())).contains("Call of duty", "Call of duty 2", "Call of duty 3");
     }
 
