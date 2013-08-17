@@ -8,45 +8,39 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service( "gameService" )
+@Service("gameService")
 public class GameServiceImpl implements GameService {
 
     @Autowired
     private GameDao gameDao;
 
     @Override
-    public Game findById( long id )
-    {
-        return gameDao.findById( id );
+    public Game findById(long id) {
+        return gameDao.findById(id);
     }
 
     @Override
-    public List<Game> findAll()
-    {
+    public List<Game> findAll() {
         return gameDao.findAll();
     }
 
     @Override
-    public void save( Game game )
-    {
+    public void save(Game game) {
         gameDao.save(game);
     }
 
     @Override
-    public void update( Game game )
-    {
+    public void update(Game game) {
         gameDao.update(game);
     }
 
     @Override
-    public void delete( Game game )
-    {
+    public void delete(Game game) {
         gameDao.delete(game);
     }
 
     @Override
-    public void shutdown()
-    {
+    public void shutdown() {
         gameDao.shutdown();
     }
 }

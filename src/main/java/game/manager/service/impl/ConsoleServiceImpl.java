@@ -8,45 +8,39 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service( "consoleService" )
+@Service("consoleService")
 public class ConsoleServiceImpl implements ConsoleService {
 
     @Autowired
     private ConsoleDao consoleDao;
 
     @Override
-    public Console findById( long id )
-    {
-        return consoleDao.findById( id );
+    public Console findById(long id) {
+        return consoleDao.findById(id);
     }
 
     @Override
-    public List<Console> findAll()
-    {
+    public List<Console> findAll() {
         return consoleDao.findAll();
     }
 
     @Override
-    public void save( Console console )
-    {
+    public void save(Console console) {
         consoleDao.save(console);
     }
 
     @Override
-    public void update( Console console )
-    {
+    public void update(Console console) {
         consoleDao.update(console);
     }
 
     @Override
-    public void delete( Console console )
-    {
+    public void delete(Console console) {
         consoleDao.delete(console);
     }
 
     @Override
-    public void shutdown()
-    {
+    public void shutdown() {
         consoleDao.shutdown();
     }
 }
