@@ -8,36 +8,37 @@
         http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!-- ANNOTATIONS POUR L'INJECTION DE DEPENDANCES -->
-    <context:annotation-config />
+    <context:annotation-config/>
 
     <!-- ANNOTATIONS POUR LA CREATION DE BEANS -->
     <context:component-scan base-package="game.manager"/>
 
     <bean id="applicationProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:csv-location.properties"/>
+        <property name="location" value="classpath:application.properties"/>
     </bean>
 
     <!-- Data Source -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-        <property name="url" value="jdbc:hsqldb:file:testdb;shutdown=true" />
-        <property name="username" value="SA" />
-        <property name="password" value="" />
-        <property name="initialSize" value="1" />
-        <property name="maxActive" value="5" />
-        <property name="poolPreparedStatements" value="true" />
-        <property name="maxOpenPreparedStatements" value="10" />
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+        <property name="url" value="jdbc:hsqldb:file:testdb;shutdown=true"/>
+        <property name="username" value="SA"/>
+        <property name="password" value=""/>
+        <property name="initialSize" value="1"/>
+        <property name="maxActive" value="5"/>
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxOpenPreparedStatements" value="10"/>
     </bean>
 
     <!-- Hibernate Session Factory  -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSource"/>
 
         <!-- Hibernate configuration -->
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
                 <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.show_sql">${hibernate.show.sql}</prop>
                 <!--<prop key="hibernate.hbm2ddl.auto">validate</prop>-->
             </props>
         </property>
@@ -55,6 +56,6 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager" />
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
 </beans>
