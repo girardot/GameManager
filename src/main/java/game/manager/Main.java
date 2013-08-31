@@ -1,4 +1,4 @@
-package game.manager.ui;
+package game.manager;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

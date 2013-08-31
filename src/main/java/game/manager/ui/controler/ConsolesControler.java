@@ -2,6 +2,7 @@ package game.manager.ui.controler;
 
 import game.manager.model.Console;
 import game.manager.model.Game;
+import game.manager.service.ConsoleService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,10 +12,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import org.springframework.stereotype.Component;
 
+import javax.inject.Inject;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+@Component
 public class ConsolesControler implements Initializable {
 
     @FXML
@@ -27,28 +31,23 @@ public class ConsolesControler implements Initializable {
     private TreeView<String> consoleTreeView = new TreeView<String>();
 
     @FXML
-    private TextField newConsoleName = new TextField();
+    private TextField newConsoleNameField = new TextField();
 
     @FXML
-    private TextField newGameTitle = new TextField();
+    private TextField newGameTitleField = new TextField();
+
+    private ObservableList<Console> consoles = FXCollections.observableArrayList();
+
+    private ObservableList<Game> games = FXCollections.observableArrayList();
 
     private Console selectedConsole = null;
 
-    ObservableList<Console> consoles = FXCollections.observableArrayList();
-
-    ObservableList<Game> games = FXCollections.observableArrayList();
+    @Inject
+    private ConsoleService consoleService;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Console ps3 = new Console("ps3");
-        ps3.addGame(new Game("call of duty 5"));
-
-        Console ps2 = new Console("ps2");
-        ps2.addGame(new Game("FF10"));
-        ps2.addGame(new Game("FF11"));
-
-        consoles.add(ps2);
-        consoles.add(ps3);
+        loadData();
 
         selectedConsole = consoles.get(0);
         games.addAll(selectedConsole.getGames());
@@ -58,6 +57,20 @@ public class ConsolesControler implements Initializable {
         refreshViews();
     }
 
+    private void loadData() {
+        Console ps3 = new Console("ps3");
+        ps3.addGame(new Game("call of duty 5"));
+
+        Console ps2 = new Console("ps2");
+        ps2.addGame(new Game("FF10"));
+        ps2.addGame(new Game("FF11"));
+
+        consoles.add(ps2);
+        consoles.add(ps3);
+        consoles.addAll(consoleService.findAll());
+    }
+
+    //refresh methods
     private void refreshViews() {
         refreshTreeView();
         refreshGameTableView();
@@ -82,14 +95,15 @@ public class ConsolesControler implements Initializable {
         gameTableView.setItems(games);
     }
 
+    //action button methods
     public void handleAddNewConsoleButtonAction(ActionEvent actionEvent) {
-        Console newConsole = new Console(newConsoleName.getText());
+        Console newConsole = new Console(newConsoleNameField.getText());
         consoles.add(newConsole);
         refreshTreeView();
     }
 
     public void handleAddNewGameButtonAction(ActionEvent actionEvent) {
-        Game newGame = new Game(newGameTitle.getText());
+        Game newGame = new Game(newGameTitleField.getText());
         games.add(newGame);
         selectedConsole.addGame(newGame);
         refreshViews();
@@ -103,4 +117,7 @@ public class ConsolesControler implements Initializable {
         refreshViews();
     }
 
+    public void saveButtonAction(ActionEvent actionEvent) {
+        //TODO
+    }
 }
