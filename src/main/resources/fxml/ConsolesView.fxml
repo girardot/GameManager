@@ -59,14 +59,14 @@
 
     <Text text="New Console name :"
           GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-    <TextField fx:id="newConsoleName"
+    <TextField fx:id="newConsoleNameField"
                GridPane.columnIndex="1" GridPane.rowIndex="2"/>
     <Button text="ADD" minWidth="20"
             GridPane.columnIndex="2" GridPane.rowIndex="2" onAction="#handleAddNewConsoleButtonAction"/>
 
     <Text text="New Game Title :"
           GridPane.columnIndex="5" GridPane.rowIndex="2"/>
-    <TextField fx:id="newGameTitle"
+    <TextField fx:id="newGameTitleField"
                GridPane.columnIndex="6" GridPane.rowIndex="2"/>
     <Button text="ADD" minWidth="20"
             GridPane.columnIndex="7" GridPane.rowIndex="2" onAction="#handleAddNewGameButtonAction"/>
