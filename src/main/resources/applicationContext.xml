@@ -2,10 +2,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
     <!-- ANNOTATIONS POUR L'INJECTION DE DEPENDANCES -->
     <context:annotation-config/>
@@ -18,16 +19,21 @@
     </bean>
 
     <!-- Data Source -->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
-        <property name="url" value="jdbc:hsqldb:file:testdb;shutdown=true"/>
-        <property name="username" value="SA"/>
-        <property name="password" value=""/>
-        <property name="initialSize" value="1"/>
-        <property name="maxActive" value="5"/>
-        <property name="poolPreparedStatements" value="true"/>
-        <property name="maxOpenPreparedStatements" value="10"/>
-    </bean>
+    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">-->
+    <!--<property name="driverClassName" value="org.hsqldb.jdbcDriver"/>-->
+    <!--<property name="url" value="jdbc:hsqldb:file:testdb;shutdown=true"/>-->
+    <!--<property name="username" value="SA"/>-->
+    <!--<property name="password" value=""/>-->
+    <!--<property name="initialSize" value="1"/>-->
+    <!--<property name="maxActive" value="5"/>-->
+    <!--<property name="poolPreparedStatements" value="true"/>-->
+    <!--<property name="maxOpenPreparedStatements" value="10"/>-->
+    <!--</bean>-->
+
+    <jdbc:embedded-database id="dataSource">
+        <jdbc:script location="classpath:schema.sql"/>
+        <jdbc:script location="classpath:init-data.sql"/>
+    </jdbc:embedded-database>
 
     <!-- Hibernate Session Factory  -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
@@ -37,9 +43,9 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->
                 <prop key="hibernate.show_sql">${hibernate.show.sql}</prop>
-                <!--<prop key="hibernate.hbm2ddl.auto">validate</prop>-->
+                <prop key="hibernate.hbm2ddl.auto">validate</prop>
             </props>
         </property>
 
