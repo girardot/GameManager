@@ -16,7 +16,7 @@ public class Console {
     @Column(name = "console_name")
     private String name;
 
-    @OneToMany(mappedBy = "console", cascade={CascadeType.ALL}, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "console", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<Game> games;
 
     public Console() {
@@ -50,6 +50,10 @@ public class Console {
 
     public void setGames(List<Game> games) {
         this.games = games;
+    }
+
+    public int getGameNumber() {
+        return games.size();
     }
 
     public void addGame(Game game) {
