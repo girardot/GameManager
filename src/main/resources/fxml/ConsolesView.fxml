@@ -20,7 +20,7 @@
            GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="3" maxWidth="200">
     </Label>
 
-    <TableView fx:id="tableView" GridPane.columnIndex="0"
+    <TableView fx:id="consoleTableView" GridPane.columnIndex="0"
                GridPane.rowIndex="1" GridPane.columnSpan="3">
         <columns>
             <TableColumn text="Console Name" fx:id="nameColumn" minWidth="200">
@@ -40,11 +40,41 @@
         </sortOrder>
     </TableView>
 
+    <Button text=">>" minWidth="20"
+            GridPane.columnIndex="4" GridPane.rowIndex="1" onAction="#displayConsoleGames"/>
+
+    <TableView fx:id="gameTableView" GridPane.columnIndex="5"
+               GridPane.rowIndex="1" GridPane.columnSpan="3">
+        <columns>
+            <TableColumn text="Game Title" fx:id="titleColumn" minWidth="200">
+                <cellValueFactory>
+                    <PropertyValueFactory property="title"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+        <sortOrder>
+            <fx:reference source="titleColumn"/>
+        </sortOrder>
+    </TableView>
+
     <Text text="New Console name :"
           GridPane.columnIndex="0" GridPane.rowIndex="2"/>
     <TextField fx:id="newConsoleName"
                GridPane.columnIndex="1" GridPane.rowIndex="2"/>
     <Button text="ADD" minWidth="20"
             GridPane.columnIndex="2" GridPane.rowIndex="2" onAction="#handleAddNewConsoleButtonAction"/>
+
+    <Text text="New Game Title :"
+          GridPane.columnIndex="5" GridPane.rowIndex="2"/>
+    <TextField fx:id="newGameTitle"
+               GridPane.columnIndex="6" GridPane.rowIndex="2"/>
+    <Button text="ADD" minWidth="20"
+            GridPane.columnIndex="7" GridPane.rowIndex="2" onAction="#handleAddNewGameButtonAction"/>
+
+    <TreeView fx:id="consoleTreeView" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="7"
+              maxWidth="800">
+
+    </TreeView>
+
 
 </GridPane>
