@@ -23,7 +23,7 @@
     <TableView fx:id="consoleTableView" GridPane.columnIndex="0"
                GridPane.rowIndex="1" GridPane.columnSpan="3">
         <columns>
-            <TableColumn text="Console Name" fx:id="nameColumn" minWidth="200">
+            <TableColumn text="Console Name" fx:id="nameColumn" minWidth="300">
                 <cellValueFactory>
                     <PropertyValueFactory property="name"/>
                 </cellValueFactory>
@@ -44,11 +44,16 @@
             GridPane.columnIndex="4" GridPane.rowIndex="1" onAction="#displayConsoleGames"/>
 
     <TableView fx:id="gameTableView" GridPane.columnIndex="5"
-               GridPane.rowIndex="1" GridPane.columnSpan="3">
+               GridPane.rowIndex="1" GridPane.columnSpan="3" minWidth="200">
         <columns>
             <TableColumn text="Game Title" fx:id="titleColumn" minWidth="200">
                 <cellValueFactory>
                     <PropertyValueFactory property="title"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Progresion" minWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="progression"/>
                 </cellValueFactory>
             </TableColumn>
         </columns>

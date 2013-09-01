@@ -48,8 +48,8 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
-                <!--<prop key="hibernate.hbm2ddl.auto">validate</prop>-->
+                <!--<prop key="hibernate.hbm2ddl.auto">create</prop>-->
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.schema}</prop>
                 <prop key="hibernate.show_sql">${hibernate.show.sql}</prop>
             </props>
         </property>

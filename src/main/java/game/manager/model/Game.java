@@ -3,6 +3,8 @@ package game.manager.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import static game.manager.model.GameProgression.TO_DO;
+
 @Entity
 @Table(name = "GAME")
 public class Game implements Serializable {
@@ -17,11 +19,15 @@ public class Game implements Serializable {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "progression")
+    private GameProgression progression = TO_DO;
+
     @ManyToOne
-    @JoinColumn(name="console_id")
+    @JoinColumn(name = "console_id")
     private Console console;
 
     public Game() {
+        progression = TO_DO;
     }
 
     public Game(String title) {
@@ -42,6 +48,14 @@ public class Game implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public GameProgression getProgression() {
+        return progression;
+    }
+
+    public void setProgression(GameProgression progression) {
+        this.progression = progression;
     }
 
     public Console getConsole() {
