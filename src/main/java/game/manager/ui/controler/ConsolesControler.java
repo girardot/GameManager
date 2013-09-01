@@ -56,8 +56,6 @@ public class ConsolesControler implements Initializable {
         selectedConsole = consoles.get(0);
         games.addAll(selectedConsole.getGames());
 
-        consoleTableView.setItems(consoles);
-
         refreshViews();
     }
 
@@ -69,6 +67,7 @@ public class ConsolesControler implements Initializable {
     private void refreshViews() {
         refreshTreeView();
         refreshGameTableView();
+        refreshConsoleTableView();
     }
 
     public void refreshTreeView() {
@@ -88,6 +87,10 @@ public class ConsolesControler implements Initializable {
 
     public void refreshGameTableView() {
         gameTableView.setItems(games);
+    }
+
+    public void refreshConsoleTableView() {
+        consoleTableView.setItems(consoles);
     }
 
     //action button methods
