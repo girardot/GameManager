@@ -3,6 +3,7 @@ package game.manager.ui.controler;
 import game.manager.model.Console;
 import game.manager.model.Game;
 import game.manager.service.ConsoleService;
+import game.manager.service.GameService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -44,6 +45,9 @@ public class ConsolesControler implements Initializable {
 
     @Inject
     private ConsoleService consoleService;
+
+    @Inject
+    private GameService gameService;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -91,6 +95,8 @@ public class ConsolesControler implements Initializable {
         Console newConsole = new Console(newConsoleNameField.getText());
         consoles.add(newConsole);
         refreshTreeView();
+
+        consoleService.save(newConsole);
     }
 
     public void handleAddNewGameButtonAction(ActionEvent actionEvent) {
@@ -98,6 +104,8 @@ public class ConsolesControler implements Initializable {
         games.add(newGame);
         selectedConsole.addGame(newGame);
         refreshViews();
+
+        gameService.save(newGame);
     }
 
     public void displayConsoleGames(ActionEvent actionEvent) {
