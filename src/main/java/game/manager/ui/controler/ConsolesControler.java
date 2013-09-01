@@ -58,15 +58,6 @@ public class ConsolesControler implements Initializable {
     }
 
     private void loadData() {
-        Console ps3 = new Console("ps3");
-        ps3.addGame(new Game("call of duty 5"));
-
-        Console ps2 = new Console("ps2");
-        ps2.addGame(new Game("FF10"));
-        ps2.addGame(new Game("FF11"));
-
-        consoles.add(ps2);
-        consoles.add(ps3);
         consoles.addAll(consoleService.findAll());
     }
 

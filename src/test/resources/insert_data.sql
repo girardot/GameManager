@@ -1,3 +1,5 @@
+TRUNCATE TABLE CONSOLE;
+TRUNCATE TABLE GAME;
 INSERT INTO CONSOLE (id, console_name) VALUES (1, 'ps2');
 INSERT INTO CONSOLE (id, console_name) VALUES (2, 'ps3');
 INSERT INTO GAME (id, title, console_id) VALUES (1, 'call of duty', 2);
